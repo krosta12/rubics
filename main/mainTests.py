@@ -51,7 +51,7 @@ def validateInputs(validate):
 
 def main(moves):
   with open('matrixresult.txt', 'a') as file:
-    testlist = ['','', '']
+    testlist = ['','', '', '']
     fullyList = []
     for i in range(len(params)):
       testlist[0] = params[i]
@@ -70,6 +70,20 @@ def main(moves):
           start(testlist)
           # print(answer)
           fullyList.append([testlist.copy(), answer])
+    
+
+
+    for i in range(len(params)):
+      print('da')
+      testlist[0] = params[i]
+      for i2 in range(len(params)):
+        testlist[1] = params[i2]
+        for i3 in range(len(params)):
+          for i4 in range(len(params)):
+            testlist[3] = params[i4]
+            start(testlist)
+            # print(answer)
+            fullyList.append([testlist.copy(), answer])
     sortedList = sorted(fullyList, key=lambda x: x[1], reverse=False)
 
 
