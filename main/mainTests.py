@@ -50,34 +50,34 @@ def validateInputs(validate):
 
 
 def main(moves):
-  testlist = ['','', '']
-  fullyList = []
-  for i in range(len(params)):
-    testlist[0] = params[i]
-    for i2 in range(len(params)):
-      testlist[1] = params[i2]
-      start(testlist)
-      # print(answer)
-      fullyList.append([testlist.copy(), answer])
-
-  for i in range(len(params)):
-    testlist[0] = params[i]
-    for i2 in range(len(params)):
-      testlist[1] = params[i2]
-      for i3 in range(len(params)):
-        testlist[2] = params[i3]
+  with open('matrixresult.txt', 'a') as file:
+    testlist = ['','', '']
+    fullyList = []
+    for i in range(len(params)):
+      testlist[0] = params[i]
+      for i2 in range(len(params)):
+        testlist[1] = params[i2]
         start(testlist)
         # print(answer)
         fullyList.append([testlist.copy(), answer])
+
+    for i in range(len(params)):
+      testlist[0] = params[i]
+      for i2 in range(len(params)):
+        testlist[1] = params[i2]
+        for i3 in range(len(params)):
+          testlist[2] = params[i3]
+          start(testlist)
+          # print(answer)
+          fullyList.append([testlist.copy(), answer])
     sortedList = sorted(fullyList, key=lambda x: x[1], reverse=False)
 
 
-  
+    
 
-  for i in sortedList:
-    with open('matrixresult.txt', 'a') as file:
-      file.write(f'{i[0]} -> {i[1]}\n')
-      file.close()
+    for i in sortedList:
+        file.write(f'{i[0]} -> {i[1]}\n')
+  file.close()
 
 main(moveList)
 input()
