@@ -1,10 +1,9 @@
-﻿# 0: 'White', 1: 'Yellow', 2: 'Orange', 3: 'Red', 4: 'Green', 5: 'Blue' blueUp
-import magiccube
+﻿import magiccube
 
 cube = magiccube.Cube(3,"YYYYYYYYYRRRRRRRRRGGGGGGGGGOOOOOOOOOBBBBBBBBBWWWWWWWWW")
 
 print(
-    'R().except(4)\nR()U()Rb()Ub().exept(6)\nRu().exept(126) \n U()L()U()R().except(480)'
+    "R().except(4)\nR()U()R()U'().exept(6)\nR()U().exept(126) \n U()L()U()R().except(480)"
 )
 
 answer = 0
@@ -13,7 +12,7 @@ params = ["U", "U'", "R", "R'", "L", "L'", "B", "B'", "F", "F'", "D", "D'"]
 
 moveList = str(
     input(
-        ' u - rotate upper side to left \n ub - rotate upper side to right \n r - rotate right side to up \n rb rotate right side to down \n l - rotate left side to up \n lb - rotate left side to down \n b - rotate back side to right \n bb - rotate back side to left \n f - rotate front side to right \n fb - rotate front side to left \n Example: r u rb ub \n Write form: '
+        " u - rotate upper side to left \n u - rotate upper side to right \n r - rotate right side to up \n r' rotate right side to down \n l - rotate left side to up \n l' - rotate left side to down \n b - rotate back side to right \n b' - rotate back side to left \n f - rotate front side to right \n f' - rotate front side to left \n Example: r u r' u' \n Write form: "
     )).upper()
 
 
@@ -52,19 +51,21 @@ def validateInputs(validate):
 
 
 def main(moves):
-    testlist = ['','']
-    for i in range(len(params)):
-      testlist[0] = params[i]
-      for i2 in range(len(params)):
-        testlist[1] = params[i2]
+  testlist = ['','']
+  fullyList = []
+  for i in range(len(params)):
+    testlist[0] = params[i]
+    for i2 in range(len(params)):
+      testlist[1] = params[i2]
+      start(testlist)
+      # print(answer)
+      fullyList.append([testlist.copy(), answer])
+  sortedList = sorted(fullyList, key=lambda x: x[1], reverse=False)
 
-        steps = testlist
-        start(steps)
-        print(answer)
-        with open('matrixresult.txt', 'a') as file:
-          file.write(f'{steps} -> {answer}\n')
-
+  for i in sortedList:
+    with open('matrixresult.txt', 'a') as file:
+      file.write(f'{i[0]} -> {i[1]}\n')
+  print(sortedList)
 
 main(moveList)
-
 input()
